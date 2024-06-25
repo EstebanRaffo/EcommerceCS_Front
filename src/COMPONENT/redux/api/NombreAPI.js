@@ -1,5 +1,5 @@
 import axios from "axios";
-const InstanceHallazgosAxios = axios.create({ baseURL: "https://localhost:5001/api/Nombre" });
+const InstanceHallazgosAxios = axios.create({ baseURL: "https://localhost:7168/api/Nombre" });
 const headerConfig = {
   headers: {
     "Content-Type": "application/json",

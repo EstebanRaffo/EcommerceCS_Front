@@ -1,7 +1,7 @@
 //FRONT END POR TOBIAS CASAZZA
 import './App.css';
 import InicioSesion from './COMPONENT/InicioSesion/InicioSesion';
-import {Route,Switch, Router} from 'react-router-dom';
+import {Route, Switch, Router} from 'react-router-dom';
 import NuevoUsuario from './COMPONENT/NuevoUsuario/NuevoUsuario';
 import {createBrowserHistory} from 'history';
 import Home from './COMPONENT/SistemaGestion/SistemaGestion'

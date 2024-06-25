@@ -1,5 +1,5 @@
 import axios from "axios";
-const InstanceDatosMedicosAxios = axios.create({ baseURL: "https://localhost:5001/api/Producto" });
+const InstanceDatosMedicosAxios = axios.create({ baseURL: "https://localhost:7168/api/Producto" });
 const headerConfig = {
   headers: {
     "Content-Type": "application/json",
