@@ -120,7 +120,7 @@ export default function SistemaGestion(props) {
 useEffect(() => {
       dispatch(getUsuarioNombre(location.pathname.substring(location.pathname.search("Home") + 5)))
       dispatch(getNombre())
-  },[, usuario] );
+  },[] );
 
   React.useEffect(()=>{
     switch(opcion){
