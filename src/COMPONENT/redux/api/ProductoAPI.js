@@ -8,8 +8,8 @@ const headerConfig = {
   },
 };
 
-export const getProductos = (param) => {
-  return InstanceDatosMedicosAxios.get(`/${param}`, headerConfig)
+export const getProductos = () => {
+  return InstanceDatosMedicosAxios.get("", headerConfig)
     .then((response) => {
       return response.data;
     })
@@ -19,6 +19,7 @@ export const getProductos = (param) => {
 };
 
 export const putProducto = (param) => {
+  param.Descripcion = param.descripciones;
   const data = JSON.stringify(param);
   return InstanceDatosMedicosAxios.put("",data, headerConfig)
     .then((response) => {
@@ -30,8 +31,9 @@ export const putProducto = (param) => {
 };
 
 export const postProducto = (param) => {
+  param.Descripcion = param.descripciones;
   const data = JSON.stringify(param);
-  return InstanceDatosMedicosAxios.post("",data, headerConfig)
+  return InstanceDatosMedicosAxios.post("", data, headerConfig)
     .then((response) => {
       return response.data;
     })

@@ -25,7 +25,7 @@ import {
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "descripciones", headerName: "Descripcion", width: 250 },
+  { field: "descripcion", headerName: "Descripcion", width: 350 },
   { field: "costo", headerName: "Costo", width: 130, type: "number" },
   {
     field: "precioVenta",
@@ -77,10 +77,9 @@ export default function Productos(props) {
   const [productoCrear, setProductoCrear] = useState(
     new Producto(0, "", 0, 0, 0, props.idUsuario)
   );
-
   useEffect(() => {
-    dispatch(getProductos(props.idUsuario));
-  }, []);
+    dispatch(getProductos());
+  }, [dispatch]);
   
   useEffect(() => {
     setRows(productos);
@@ -95,31 +94,32 @@ export default function Productos(props) {
     dispatch(postProducto(productoCrear));
     setProductoCrear(new Producto(0, "", 0, 0, 0, props.idUsuario));
     alert("PRODUCTO CREADO");
-    dispatch(getProductos(props.idUsuario));
+    dispatch(getProductos());
   };
 
   const onClickModificar = () => {
     dispatch(putProducto(rowClicked));
     setRowClicked(new Producto(0, "", 0, 0, 0, props.idUsuario));
     alert("PRODUCTO MODIFICADO");
-    dispatch(getProductos(props.idUsuario));
+    dispatch(getProductos());
   };
 
   const onClickEliminar = () => {
     dispatch(deleteProducto(rowClicked.id));
     setRowClicked(new Producto(0, "", 0, 0, 0, props.idUsuario));
     alert("PRODUCTO ELIMINADO");
-    dispatch(getProductos(props.idUsuario));
+    dispatch(getProductos());
     setOpenEliminar(false)
   };
 
   useEffect(() => {
   }, [productoCrear]);
+
   const onRowClick = (e) => {
     setRowClicked(
       new Producto(
         e.row.id,
-        e.row.descripciones,
+        e.row.descripcion,
         e.row.costo,
         e.row.precioVenta,
         e.row.stock,
@@ -171,7 +171,7 @@ export default function Productos(props) {
             <Button
               variant="contained"
               startIcon={<CreateIcon />}
-              disabled={rowClicked.id == undefined}
+              disabled={rowClicked.id === undefined}
               onClick={modalModificarOpen}
             >
               Modificar
@@ -181,7 +181,7 @@ export default function Productos(props) {
             <Button
               variant="contained"
               startIcon={<DeleteForeverIcon />}
-              disabled={rowClicked.id == undefined}
+              disabled={rowClicked.id === undefined}
               onClick={modalEliminarOpen}
             >
               Eliminar
