@@ -25,7 +25,7 @@ import { postVenta } from "../redux/actions/VentaAction";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "descripciones", headerName: "Descripcion", width: 130 },
+  { field: "descripcion", headerName: "Descripcion", width: 130 },
   {
     field: "precioVenta",
     headerName: "Precio Venta",
@@ -64,8 +64,8 @@ export default function Ventas(props) {
   const ventaRespuesta = useSelector((state) => state.ventaReducer?.getRespuesta);
 
   useEffect(() => {
-    dispatch(getProductos(props.idUsuario));
-  }, []);
+    dispatch(getProductos());
+  }, [dispatch]);
 
   useEffect(() => {
     setRows(productos);
@@ -74,11 +74,11 @@ export default function Ventas(props) {
   const onChangeId = (event) => {
     let find = false;
     rows.forEach((element) => {
-      if (event.target.value == element.id) {
+      if (+event.target.value === element.id) {
         setAgregarProducto(
           new Producto(
             element.id,
-            element.descripciones,
+            element.descripcion,
             element.costo,
             element.precioVenta,
             0
@@ -108,12 +108,12 @@ export default function Ventas(props) {
   };
 
   const onClickAgregar = () => {
-    if(agregarProducto.id == 0){
+    if(agregarProducto.id === 0){
       return 
     }
     var repetido = false;
     carrito.map((e, index) => {
-      if (e.id == agregarProducto.id) {
+      if (e.id === agregarProducto.id) {
         cambiarProducto(index);
         repetido = true;
       }
@@ -203,7 +203,7 @@ export default function Ventas(props) {
                 </Grid>
                 <Grid margin={1}>
                   <TextField
-                    name="descripciones"
+                    name="descripcion"
                     label="Descripcion"
                     value={agregarProducto.descripciones}
                     disabled
@@ -223,7 +223,7 @@ export default function Ventas(props) {
                   <TextField
                     type="number"
                     name="stock"
-                    label="Stock"
+                    label="Cantidad"
                     style={{ backgroundColor: "yellow" }}
                     value={agregarProducto.stock}
                     onChange={onChangeStock}
@@ -251,7 +251,7 @@ export default function Ventas(props) {
                       <TableCell>Id</TableCell>
                       <TableCell>Descripcion</TableCell>
                       <TableCell>Precio</TableCell>
-                      <TableCell>Stock</TableCell>
+                      <TableCell>Cantidad</TableCell>
                       <TableCell>Total/Producto</TableCell>
                     </TableRow>
                   </TableHead>

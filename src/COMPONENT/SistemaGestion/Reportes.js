@@ -29,13 +29,12 @@ export default function Reportes(props) {
     const [rowsModal, setRowsModal] = React.useState([]) 
     const [rowClicked, setRowClicked] = React.useState([]);
     const [cargados, setCargados] = React.useState(false)
-
+    const {idUsuario} = props; 
 
     useEffect(() => {
-        dispatch(getProductos(props.idUsuario))
-        dispatch(getProductosVendidos(props.idUsuario))
-        dispatch(getVentas(props.idUsuario))
-        
+        dispatch(getProductos(idUsuario))
+        dispatch(getProductosVendidos(idUsuario))
+        dispatch(getVentas(idUsuario))
     }, [])
 
 

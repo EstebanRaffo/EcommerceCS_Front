@@ -45,7 +45,7 @@ export default function Inicio(props) {
 
     React.useEffect(() => {
         dispatch(getUsuarioNombre(location.pathname.substring(location.pathname.search("Home") + 5)))
-    },[])
+    },[dispatch, location.pathname])
     
 
     function onClickBoton(num){

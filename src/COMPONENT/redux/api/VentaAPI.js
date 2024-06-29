@@ -20,7 +20,14 @@ export const getVentas = (param) => {
 };
 
 export const postVenta = (param) => {
-  const data = JSON.stringify(param.param1);
+  let productos = param.param1.map((e) => {
+    return {
+      ...e,
+      Descripcion: e.descripciones
+    }
+  });
+  console.log(productos)
+  const data = JSON.stringify(productos);
   return InstanceDatosMedicosAxios.post(`/${param.param2}`,data, headerConfig)
     .then((response) => {
       return response.data;
