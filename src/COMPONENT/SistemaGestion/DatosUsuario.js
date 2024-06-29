@@ -26,7 +26,7 @@ export default function DatosUsuario(props) {
 
 
     React.useEffect(() => {
-        if(usuario.id == 0){
+        if(usuario.id === 0){
             dispatch(getUsuarioNombre(props.datosUsuario.nombreUsuario))
         }
     },[usuario])
@@ -67,10 +67,10 @@ export default function DatosUsuario(props) {
                                         <Grid margin={5}>
                                             <TextField name="mail"
                                                 id="outlined-basic"
-                                                label="Mail"
+                                                label="Email"
                                                 variant="outlined"
                                                 required={true}
-                                                value={usuario.mail}
+                                                value={usuario.email}
                                                 InputLabelProps={{ shrink: true }}
                                                 onChange={onChangeUsuario}
                                             />
@@ -122,7 +122,7 @@ export default function DatosUsuario(props) {
                                                 name="contraseña"
                                                 id="outlined-basic" label="Contraseña"
                                                 variant="outlined"
-                                                value={usuario.contraseña}
+                                                value={usuario.password}
                                                 InputLabelProps={{ shrink: true }}
                                                 onChange={onChangeUsuario}
                                             />

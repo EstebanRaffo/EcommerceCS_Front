@@ -120,7 +120,7 @@ export default function SistemaGestion(props) {
 useEffect(() => {
       dispatch(getUsuarioNombre(location.pathname.substring(location.pathname.search("Home") + 5)))
       dispatch(getNombre())
-  },[] );
+  }, [dispatch, location.pathname] );
 
   React.useEffect(()=>{
     switch(opcion){
@@ -139,8 +139,9 @@ useEffect(() => {
       case 4:
         setPagina(<DatosUsuario datosUsuario={usuario} />)
         break;
+      default:
     }
-  },[opcion])
+  }, [opcion, usuario])
 
   function OnClickLogOut(){
     history.push("../InicioSesion/InicioSesion")
