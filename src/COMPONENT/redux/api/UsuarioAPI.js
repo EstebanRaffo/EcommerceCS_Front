@@ -29,7 +29,6 @@ export const getUsuarioNombre = (param) => {
 };
 
 export const postUsuario = (param) => {
-
   return InstanceDatosMedicosAxios.post(param, headerConfig)
     .then((response) => {
       return response.data;
@@ -40,7 +39,6 @@ export const postUsuario = (param) => {
 };
 
 export const putUsuario = (param) => {
-  console.log(param)
   const data = JSON.stringify(param);
   return InstanceDatosMedicosAxios.put("",data, headerConfig)
     .then((response) => {

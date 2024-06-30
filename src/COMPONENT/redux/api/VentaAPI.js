@@ -9,7 +9,6 @@ const headerConfig = {
 };
 
 export const getVentas = (param) => {
-  const data = JSON.stringify(param);
   return InstanceDatosMedicosAxios.get(`/${param}`, headerConfig)
     .then((response) => {
       return response.data;
@@ -26,9 +25,8 @@ export const postVenta = (param) => {
       Descripcion: e.descripciones
     }
   });
-  console.log(productos)
   const data = JSON.stringify(productos);
-  return InstanceDatosMedicosAxios.post(`/${param.param2}`,data, headerConfig)
+  return InstanceDatosMedicosAxios.post(`/${param.param2}`, data, headerConfig)
     .then((response) => {
       return response.data;
     })

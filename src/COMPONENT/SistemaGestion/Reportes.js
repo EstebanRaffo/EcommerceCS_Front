@@ -35,7 +35,7 @@ export default function Reportes(props) {
         dispatch(getProductos(idUsuario))
         dispatch(getProductosVendidos(idUsuario))
         dispatch(getVentas(idUsuario))
-    }, [])
+    }, [dispatch, idUsuario])
 
 
     const onRowClick = (e) => {
@@ -50,7 +50,6 @@ export default function Reportes(props) {
     ];
 
     useEffect(() => {
-        
             let rowsActualizados = [];
             ventas.forEach(venta => {
                 let row = {id: venta.id, cantProductos: 0, TotalFacturado: 0};
@@ -72,21 +71,20 @@ export default function Reportes(props) {
                 })
                 row.TotalFacturado = cuentaFacturado;
     
-               rowsActualizados.push(row)
-    
+                rowsActualizados.push(row)
             });
             setRowsInicial(rowsActualizados)
-    },[productos, ventas, productosVendidos])
+    }, [productos, ventas, productosVendidos])
 
 
     function GetProductosPorVenta(num){
         let productosPorVenta = [];
         
         productosVendidos.forEach(prod => {
-            if(prod.idVenta == num){
+            if(prod.idVenta === num){
                 let stockVendido = prod.stock;
                 productos.forEach(prodReal => {
-                    if(prodReal.id == prod.idProducto){
+                    if(prodReal.id === prod.idProducto){
                         productosPorVenta.push([prodReal, stockVendido])
                     }
                 });
@@ -106,7 +104,7 @@ export default function Reportes(props) {
                 <Card>
                     <CardContent>
                         <Typography textAlign={'left'} variant='h5'>Reporte de Ventas</Typography><br />
-                        <Grid textAlign={'start'}><Button variant="contained" startIcon={<VisibilityIcon />} onClick={OnClickVerDetalle} disabled={rowClicked[0] == undefined}>Ver Detalle</Button></Grid>
+                        <Grid textAlign={'start'}><Button variant="contained" startIcon={<VisibilityIcon />} onClick={OnClickVerDetalle} disabled={rowClicked[0] === undefined}>Ver Detalle</Button></Grid>
                         <Box py={4}>
                             <div style={{ height: 400, width: "100%" }}>
                                 <DataGrid

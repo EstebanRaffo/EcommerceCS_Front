@@ -111,6 +111,10 @@ export default function Ventas(props) {
     if(agregarProducto.id === 0){
       return 
     }
+    if(agregarProducto.stock < 1){
+      alert("La cantidad debe ser mayor a 0")
+      return
+    }
     var repetido = false;
     carrito.map((e, index) => {
       if (e.id === agregarProducto.id) {
@@ -183,7 +187,7 @@ export default function Ventas(props) {
                 <Typography textAlign={"left"} variant="h6">
                   Agregar Producto
                 </Typography>
-                <Button variant="outlined" onClick={onClickVerProductos}>
+                <Button variant="contained" onClick={onClickVerProductos}>
                   Ver Productos
                 </Button>
               </Grid>
