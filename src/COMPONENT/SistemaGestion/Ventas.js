@@ -61,7 +61,7 @@ export default function Ventas(props) {
   const [rows, setRows] = useState([]);
   const dispatch = useDispatch();
   const productos = useSelector((state) => state.productoReducer?.productos);
-  const ventaRespuesta = useSelector((state) => state.ventaReducer?.getRespuesta);
+  // const ventaRespuesta = useSelector((state) => state.ventaReducer?.getRespuesta);
 
   useEffect(() => {
     dispatch(getProductos());
